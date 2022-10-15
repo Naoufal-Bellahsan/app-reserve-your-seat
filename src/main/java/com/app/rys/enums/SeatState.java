@@ -9,14 +9,14 @@ package com.app.rys.enums;
 public enum SeatState {
 	DISPONIBLE("D") ,NO_DISPONIBLE("ND");
 	
-	private String seatSstate;
+	private String seatState;
 
-	SeatState(String seatSstate) {
-		this.seatSstate=seatSstate;
+	SeatState(String seatState) {
+		this.seatState=seatState;
 	}
 
 	public String getState() {
-		return seatSstate;
+		return seatState;
 	}
 	
 }
