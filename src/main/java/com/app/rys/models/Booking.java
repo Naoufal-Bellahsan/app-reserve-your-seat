@@ -17,11 +17,11 @@ import javax.validation.constraints.Pattern;
  * Entidad reserva
  * 
  * @author Oleksandr
- *
  */
+
 public class Booking {
 	
-	// propiedades
+		// propiedades
 		@Id
 		@GeneratedValue(strategy = GenerationType.AUTO) 
 		private Long id;
@@ -32,7 +32,7 @@ public class Booking {
 		@Temporal(TemporalType.TIMESTAMP)  //Fecha y hora
 		private Date ReservationDate;
 		
-		private String BookingState;
+		private String bookingState;
 
 		//Constructores: vacio y con campos
 		public Booking(Long id,
@@ -42,7 +42,7 @@ public class Booking {
 			this.id = id;
 			this.bookingCode = bookingCode;
 			ReservationDate = reservationDate;
-			this.BookingState = bookingState;
+			this.bookingState = bookingState;
 		}
 		
 		public Booking() {
@@ -75,17 +75,17 @@ public class Booking {
 		}
 
 		public String getBookingState() {
-			return BookingState;
+			return bookingState;
 		}
 
 		public void setBookingState(String bookingState) {
-			this.BookingState = bookingState;
+			this.bookingState = bookingState;
 		}
 		
 		// equals & hashcode
 		@Override
 		public int hashCode() {
-			return Objects.hash(ReservationDate, bookingCode, BookingState, id);
+			return Objects.hash(ReservationDate, bookingCode, bookingState, id);
 		}
 
 		@Override
@@ -99,14 +99,14 @@ public class Booking {
 			Booking other = (Booking) obj;
 			return Objects.equals(ReservationDate, other.ReservationDate)
 					&& Objects.equals(bookingCode, other.bookingCode)
-					&& Objects.equals(BookingState, other.BookingState) && Objects.equals(id, other.id);
+					&& Objects.equals(bookingState, other.bookingState) && Objects.equals(id, other.id);
 		}
 
 		//toString
 		@Override
 		public String toString() {
 			return "Booking [id=" + id + ", bookingCode=" + bookingCode + ", ReservationDate=" + ReservationDate
-					+ ", bookingState=" + BookingState + "]";
+					+ ", bookingState=" + bookingState + "]";
 		}
 		
 		

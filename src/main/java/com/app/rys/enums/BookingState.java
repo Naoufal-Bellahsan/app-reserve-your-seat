@@ -1,10 +1,9 @@
 package com.app.rys.enums;
 
 /**
- * Entidad reserva
+ * Enum del estado reserva
  * 
  * @author Oleksandr
- *
  */
 
 public enum BookingState {
@@ -19,7 +18,5 @@ public enum BookingState {
 	private BookingState(String bookingState) {
 		this.bookingState=bookingState;
 	}
-
-
 
 }
