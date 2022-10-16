@@ -1,13 +1,25 @@
 package com.app.rys.enums;
 
+/**
+ * Entidad reserva
+ * 
+ * @author Oleksandr
+ *
+ */
+
 public enum BookingState {
-	ANULADA, PENDIENTE, CONFIRMADA;
+	 ANULADA("A"), PENDIENTE("P"), CONFIRMADA("C");
 	
-	private String BookingState;
+	private String bookingState;
 	
 	public String getState() {
-		return BookingState;
+		return bookingState;
 	}
-		
+	
+	private BookingState(String bookingState) {
+		this.bookingState=bookingState;
+	}
+
+
 
 }

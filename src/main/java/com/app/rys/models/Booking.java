@@ -13,11 +13,15 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Pattern;
 
+/**
+ * Entidad reserva
+ * 
+ * @author Oleksandr
+ *
+ */
 public class Booking {
 	
-	
 	// propiedades
-	
 		@Id
 		@GeneratedValue(strategy = GenerationType.AUTO) 
 		private Long id;
@@ -25,21 +29,12 @@ public class Booking {
 		@Pattern(message = "Booking code not valid", regexp = "^[a-z]{1}-[0-9]")
 		private String bookingCode;
 		
-		@Basic
 		@Temporal(TemporalType.TIMESTAMP)  //Fecha y hora
 		private Date ReservationDate;
 		
-	
-		private enum State{
-			ANULADA,PENDIENTE,CONFIRMADA
-		}
-		
 		private String BookingState;
-		
-		
-		//Constructores 
-		
 
+		//Constructores: vacio y con campos
 		public Booking(Long id,
 				@Pattern(message = "Booking code not valid", regexp = "^[a-z]{1}-[0-9]") String bookingCode,
 				Date reservationDate, String bookingState) {
@@ -47,13 +42,14 @@ public class Booking {
 			this.id = id;
 			this.bookingCode = bookingCode;
 			ReservationDate = reservationDate;
-			BookingState = bookingState;
+			this.BookingState = bookingState;
 		}
 		
 		public Booking() {
 			
 		}
-
+		
+		// Getters and Setters
 		public Long getId() {
 			return id;
 		}
@@ -83,15 +79,13 @@ public class Booking {
 		}
 
 		public void setBookingState(String bookingState) {
-			BookingState = bookingState;
+			this.BookingState = bookingState;
 		}
 		
-		
-		//Equals y HashCode
-
+		// equals & hashcode
 		@Override
 		public int hashCode() {
-			return Objects.hash(BookingState, ReservationDate, bookingCode, id);
+			return Objects.hash(ReservationDate, bookingCode, BookingState, id);
 		}
 
 		@Override
@@ -103,21 +97,20 @@ public class Booking {
 			if (getClass() != obj.getClass())
 				return false;
 			Booking other = (Booking) obj;
-			return Objects.equals(BookingState, other.BookingState)
-					&& Objects.equals(ReservationDate, other.ReservationDate)
-					&& Objects.equals(bookingCode, other.bookingCode) && Objects.equals(id, other.id);
+			return Objects.equals(ReservationDate, other.ReservationDate)
+					&& Objects.equals(bookingCode, other.bookingCode)
+					&& Objects.equals(BookingState, other.BookingState) && Objects.equals(id, other.id);
 		}
-		
+
 		//toString
 		@Override
 		public String toString() {
 			return "Booking [id=" + id + ", bookingCode=" + bookingCode + ", ReservationDate=" + ReservationDate
-					+ ", BookingState=" + BookingState + "]";
+					+ ", bookingState=" + BookingState + "]";
 		}
 		
 		
 		
-	
 		
 		
 		
