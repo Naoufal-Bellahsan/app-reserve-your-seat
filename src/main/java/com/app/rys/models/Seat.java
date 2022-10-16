@@ -18,75 +18,75 @@ import com.app.rys.enums.SeatState;
  */
 @Entity
 public class Seat {
-	
-		// propiedaes
-		@Id
-		@GeneratedValue(strategy = GenerationType.AUTO) 
-		private Long id;
-		
-		private String seatNumber;
-		
-		private String state = SeatState.DISPONIBLE.getState();
 
-		// Constructores
-		public Seat(Long id, String seatNumber, String state) {
-			this.id = id;
-			this.seatNumber = seatNumber;
-			this.state = state;
-		}
+	// propiedaes
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-		public Seat() {
-			
-		}
+	private String seatNumber;
 
-		// getters & getters
-		public Long getId() {
-			return id;
-		}
+	private String state = SeatState.DISPONIBLE.getState();
 
-		public void setId(Long id) {
-			this.id = id;
-		}
+	// Constructores
+	public Seat(Long id, String seatNumber, String state) {
+		this.id = id;
+		this.seatNumber = seatNumber;
+		this.state = state;
+	}
 
-		public String getSeatNumber() {
-			return seatNumber;
-		}
+	public Seat() {
 
-		public void setSeatNumber(String seatNumber) {
-			this.seatNumber = seatNumber;
-		}
+	}
 
-		public String getState() {
-			return state;
-		}
+	// getters & getters
+	public Long getId() {
+		return id;
+	}
 
-		public void setState(String state) {
-			this.state = state;
-		}
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-		// hashCode & equals
-		@Override
-		public int hashCode() {
-			return Objects.hash(id, seatNumber, state);
-		}
+	public String getSeatNumber() {
+		return seatNumber;
+	}
 
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			Seat other = (Seat) obj;
-			return Objects.equals(id, other.id) && Objects.equals(seatNumber, other.seatNumber)
-					&& Objects.equals(state, other.state);
-		}
+	public void setSeatNumber(String seatNumber) {
+		this.seatNumber = seatNumber;
+	}
 
-		// toString
-		@Override
-		public String toString() {
-			return String.format("Seat [id=%s, seatNumber=%s, state=%s]", id, seatNumber, state);
-		}	
-		
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	// hashCode & equals
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, seatNumber, state);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Seat other = (Seat) obj;
+		return Objects.equals(id, other.id) && Objects.equals(seatNumber, other.seatNumber)
+				&& Objects.equals(state, other.state);
+	}
+
+	// toString
+	@Override
+	public String toString() {
+		return String.format("Seat [id=%s, seatNumber=%s, state=%s]", id, seatNumber, state);
+	}
+
 }
