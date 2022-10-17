@@ -2,17 +2,16 @@ package com.app.rys.models;
 
 import java.util.Objects;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import org.hibernate.annotations.CollectionId;
 
 /**
  * Entidad Usuario
@@ -20,6 +19,8 @@ import org.hibernate.annotations.CollectionId;
  * @author Naoufal
  *
  */
+@Entity
+@Table(name = "users")
 public class User {
 
 	// propiedaes

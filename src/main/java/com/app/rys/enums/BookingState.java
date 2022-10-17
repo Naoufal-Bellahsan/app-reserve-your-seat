@@ -5,18 +5,17 @@ package com.app.rys.enums;
  * 
  * @author Oleksandr
  */
-
 public enum BookingState {
-	 ANULADA("A"), PENDIENTE("P"), CONFIRMADA("C");
-	
+	ANULADA("A"), PENDIENTE("P"), CONFIRMADA("C");
+
 	private String bookingState;
-	
+
 	public String getState() {
 		return bookingState;
 	}
-	
+
 	private BookingState(String bookingState) {
-		this.bookingState=bookingState;
+		this.bookingState = bookingState;
 	}
 
 }
