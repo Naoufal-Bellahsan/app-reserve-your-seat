@@ -3,9 +3,7 @@ package com.app.rys.models;
 import java.util.Date;
 import java.util.Objects;
 
-import javax.persistence.Basic;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +16,7 @@ import javax.validation.constraints.Pattern;
  * 
  * @author Oleksandr
  */
+@Entity
 public class Booking {
 
 	// propiedades
