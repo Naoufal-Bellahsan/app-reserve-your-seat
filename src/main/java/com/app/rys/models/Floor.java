@@ -27,7 +27,11 @@ public class Floor {
 	private Long id;
 
 	private String floorNumber;
-
+	
+	// una planta puede tener varios asientos @OneToMany
+	@OneToMany(mappedBy = "floor", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Seat> seats;
+		
 	// una planta esta asignada a un edificio único @ManyToOne
 	@ManyToOne()
 	@JoinColumn(name = "building_id")
@@ -59,10 +63,6 @@ public class Floor {
 	public void setFloorNumber(String floorNumber) {
 		this.floorNumber = floorNumber;
 	}
-	
-	// una planta puede tener varios asientos @OneToMany
-	@OneToMany(mappedBy = "floor", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Seat> seats;
 	
 	// hashCode & equals
 	@Override
