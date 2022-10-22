@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Pattern;
@@ -31,6 +33,11 @@ public class Booking {
 	private Date ReservationDate;
 
 	private String bookingState;
+
+	// varias reserva pueden tener sólo un usuario @ManyToOne
+	@ManyToOne()
+	@JoinColumn(name = "user_id")
+	private User user;
 
 	// Constructores: vacio y con campos
 	public Booking(Long id, @Pattern(message = "Booking code not valid", regexp = "^[a-z]{1}-[0-9]") String bookingCode,
