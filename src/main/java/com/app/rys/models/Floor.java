@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  * Entidad Planta
@@ -23,6 +25,11 @@ public class Floor {
 
 	private String floorNumber;
 
+	// una planta esta asignada a un edificio único @ManyToOne
+	@ManyToOne()
+	@JoinColumn(name = "building_id")
+	private Building building;
+	
 	// Constructores
 	public Floor(Long id, String floorNumber) {
 		this.id = id;

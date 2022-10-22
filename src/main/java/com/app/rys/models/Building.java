@@ -1,11 +1,14 @@
 package com.app.rys.models;
 
+import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * Entidad Edificio
@@ -24,7 +27,11 @@ public class Building {
 	private String adrress;
 
 	private String city;
-
+	
+	// Un edifico puede tener muchas plantas @OneToMany 
+	@OneToMany(mappedBy = "building", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Floor> floors;
+	
 	// Constructores
 	public Building(Long id, String adrress, String city) {
 		this.id = id;
