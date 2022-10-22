@@ -1,11 +1,14 @@
 package com.app.rys.models;
 
+import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * Entidad Planta
@@ -49,7 +52,11 @@ public class Floor {
 	public void setFloorNumber(String floorNumber) {
 		this.floorNumber = floorNumber;
 	}
-
+	
+	// una planta puede tener varios asientos @OneToMany
+	@OneToMany(mappedBy = "floor", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Seat> seats;
+	
 	// hashCode & equals
 	@Override
 	public int hashCode() {
