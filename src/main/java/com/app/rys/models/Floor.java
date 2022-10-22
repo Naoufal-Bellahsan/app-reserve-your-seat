@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  * Entidad Planta
@@ -25,7 +27,16 @@ public class Floor {
 	private Long id;
 
 	private String floorNumber;
-
+	
+	// una planta puede tener varios asientos @OneToMany
+	@OneToMany(mappedBy = "floor", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Seat> seats;
+		
+	// una planta esta asignada a un edificio único @ManyToOne
+	@ManyToOne()
+	@JoinColumn(name = "building_id")
+	private Building building;
+	
 	// Constructores
 	public Floor(Long id, String floorNumber) {
 		this.id = id;
@@ -52,10 +63,6 @@ public class Floor {
 	public void setFloorNumber(String floorNumber) {
 		this.floorNumber = floorNumber;
 	}
-	
-	// una planta puede tener varios asientos @OneToMany
-	@OneToMany(mappedBy = "floor", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Seat> seats;
 	
 	// hashCode & equals
 	@Override

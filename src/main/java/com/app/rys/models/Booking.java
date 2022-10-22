@@ -34,7 +34,7 @@ public class Booking {
 
 	private String bookingState;
 
-	// varias reserva pueden tener sólo un usuario @ManyToOne
+	// una reserva asignada a un único usuario @ManyToOne
 	@ManyToOne()
 	@JoinColumn(name = "user_id")
 	private User user;
