@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import com.app.rys.enums.SeatState;
 
@@ -26,7 +28,12 @@ public class Seat {
 	private String seatNumber;
 
 	private String state = SeatState.DISPONIBLE.getState();
-
+	
+	// un asiento esta asginado a una planta unica @ManyToOne
+	@ManyToOne()
+	@JoinColumn(name = "floor_id")
+	private Floor floor;
+	
 	// Constructores
 	public Seat(Long id, String seatNumber, String state) {
 		this.id = id;
