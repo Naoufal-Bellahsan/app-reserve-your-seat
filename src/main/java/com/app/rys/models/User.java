@@ -118,6 +118,14 @@ public class User {
 		this.phone = phone;
 	}
 
+	public List<Booking> getBookings() {
+		return bookings;
+	}
+
+	public void setBookings(List<Booking> bookings) {
+		this.bookings = bookings;
+	}
+
 	// equals & hashcode
 	@Override
 	public int hashCode() {

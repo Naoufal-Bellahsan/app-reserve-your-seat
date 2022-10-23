@@ -68,6 +68,14 @@ public class Building {
 		this.city = city;
 	}
 
+	public List<Floor> getFloors() {
+		return floors;
+	}
+
+	public void setFloors(List<Floor> floors) {
+		this.floors = floors;
+	}
+
 	// hashCode & equals
 	@Override
 	public int hashCode() {

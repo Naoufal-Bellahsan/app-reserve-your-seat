@@ -64,6 +64,22 @@ public class Floor {
 		this.floorNumber = floorNumber;
 	}
 	
+	public List<Seat> getSeats() {
+		return seats;
+	}
+
+	public void setSeats(List<Seat> seats) {
+		this.seats = seats;
+	}
+
+	public Building getBuilding() {
+		return building;
+	}
+
+	public void setBuilding(Building building) {
+		this.building = building;
+	}
+
 	// hashCode & equals
 	@Override
 	public int hashCode() {

@@ -87,6 +87,22 @@ public class Booking {
 	public void setBookingState(String bookingState) {
 		this.bookingState = bookingState;
 	}
+	
+	public String getInformacionDeReseva() {
+		return informacionDeReseva;
+	}
+
+	public void setInformacionDeReseva(String informacionDeReseva) {
+		this.informacionDeReseva = informacionDeReseva;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	// equals & hashcode
 	@Override

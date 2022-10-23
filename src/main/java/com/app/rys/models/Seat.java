@@ -70,6 +70,14 @@ public class Seat {
 		this.state = state;
 	}
 
+	public Floor getFloor() {
+		return floor;
+	}
+
+	public void setFloor(Floor floor) {
+		this.floor = floor;
+	}
+
 	// hashCode & equals
 	@Override
 	public int hashCode() {
