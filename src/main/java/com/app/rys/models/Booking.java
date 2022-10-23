@@ -34,6 +34,8 @@ public class Booking {
 
 	private String bookingState;
 
+	private String informacionDeReseva;
+	
 	// una reserva asignada a un único usuario @ManyToOne
 	@ManyToOne()
 	@JoinColumn(name = "user_id")
