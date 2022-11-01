@@ -13,6 +13,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Pattern;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Entidad reserva
  * 
@@ -37,17 +40,17 @@ public class Booking {
 	private String informacionDeReseva;
 	
 	// una reserva asignada a un único usuario @ManyToOne
+	@JsonIgnore
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@ManyToOne()
 	@JoinColumn(name = "user_id")
 	private User user;
 
 	// Constructores: vacio y con campos
-	public Booking(Long id, @Pattern(message = "Booking code not valid", regexp = "^[a-z]{1}-[0-9]") String bookingCode,
+	public Booking(@Pattern(message = "Booking code not valid", regexp = "^[a-z]{1}-[0-9]") String bookingCode,
 			Date reservationDate, String bookingState) {
-		super();
-		this.id = id;
 		this.bookingCode = bookingCode;
-		ReservationDate = reservationDate;
+		this.ReservationDate = reservationDate;
 		this.bookingState = bookingState;
 	}
 

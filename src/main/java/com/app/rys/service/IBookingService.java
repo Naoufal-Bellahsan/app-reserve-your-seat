@@ -1,5 +1,7 @@
 package com.app.rys.service;
 
+import java.util.List;
+
 import com.app.rys.models.Booking;
 import com.app.rys.models.Seat;
 
@@ -16,12 +18,19 @@ public interface IBookingService {
 	 * 
 	 * @return
 	 */
-	public void createReservation(Seat seat);
+	public Booking createReservation(Seat seat);
 	
 	/**
 	 * Método para eliminar una reserva
 	 * 
 	 * @return
 	 */
-	public Booking deletReservation(Booking booking);
+	public Booking deletReservation(Long id);
+	
+	/**
+	 * Método para devolver las reservas
+	 * 
+	 * @return
+	 */
+	public List<Booking> getReservation();
 }
