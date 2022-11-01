@@ -77,7 +77,7 @@ public class BookingService implements IBookingService {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println("Booking not available");
+			System.out.println("Seat not available");
 		}
 		return null;
 	}
