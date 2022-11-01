@@ -1,9 +1,6 @@
 package com.app.rys;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-
 import javax.annotation.PostConstruct;
 
 
@@ -17,8 +14,6 @@ import com.app.rys.models.Floor;
 import com.app.rys.models.Seat;
 import com.app.rys.models.User;
 import com.app.rys.repository.BuildingRepository;
-import com.app.rys.repository.FloorRepository;
-import com.app.rys.repository.SeatRepository;
 import com.app.rys.repository.UserRepository;
 
 @SpringBootApplication
@@ -29,12 +24,6 @@ public class RysApplication {
 	
 	@Autowired
 	private BuildingRepository buildingRepository;
-	
-	@Autowired
-	private FloorRepository floorRepository;
-	
-	@Autowired 
-	private SeatRepository seatRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(RysApplication.class, args);
