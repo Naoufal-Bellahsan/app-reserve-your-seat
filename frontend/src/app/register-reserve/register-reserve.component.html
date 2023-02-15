@@ -1,0 +1,50 @@
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center">Create new reservation</h3>
+    
+    
+        <div class="from-group">
+            <label>Date: <input type="date" class="from-control" id="fecha" [(ngModel)]="todayDate" [value]="todayDate"
+                    name="fecha">
+            </label>
+        </div><br>
+        <div class="from-group">
+            <label>City:
+                <select name="miselect" [(ngModel)]="ciudad" (change)="obtenerEdificios()">
+                    <option [selected]="selectedCity===ciudad" *ngFor="let selectedCity of ciudades"
+                        [ngValue]="selectedCity">{{selectedCity}}</option>
+                </select>
+
+                <!-- <p id="data" name="data">{{seleccionado}}</p>-->
+                <!-- <select>
+                    <option> Madrid </option>
+                    <option> Barcelona </option>
+                </select> -->
+            </label>
+        </div><br>
+
+
+        <div class="from-group">
+            <label>Building: <select name="edificio" [(ngModel)]="adrress" (change)="obtenerPlantas()">
+                    <option [selected]="building.adrress===adrress" *ngFor="let building of buildings"
+                        [value]="building.adrress">{{building.adrress}}</option>
+                </select>
+            </label>
+        </div><br>
+        <!--Para cajas he quitado el form-->
+        <div class="from-group">
+            <label>Floor:</label>
+            <div class="floors-container">
+                <div *ngFor="let floor of floors" class="floor-box" (click)="onSelectFloor(floor.floorNumber)">
+                    <input type="radio" [value]="floor.floorNumber" [(ngModel)]="selectedFloor" id="floor-{{floor.floorNumber}}">
+                    <label for="floor-{{floor.floorNumber}}">Floor {{floor.floorNumber}} ({{floor.ocupancy}}%)</label>
+                </div>
+            </div>
+        </div>
+    <br><br>
+    <div class="container">
+        <a [routerLink]="isSelected ? 'reserve' : null">
+            <button *ngIf="selectedFloor || true" type="button" class="btn btn-success" [disabled]="!selectedFloor" [ngClass]="{'disabled-button': !selectedFloor}" (click)="isSelected = selectedFloor; obtenerSillas()">Select</button>
+          </a>
+        <a href=""><button type="button" class="btn btn-success" style="margin-left: 10px;">Cancel</button></a>
+    </div>
+</div>

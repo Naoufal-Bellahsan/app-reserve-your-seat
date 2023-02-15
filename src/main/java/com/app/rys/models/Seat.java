@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
 
 import com.app.rys.enums.SeatState;
 
@@ -27,13 +28,13 @@ public class Seat {
 
 	private String seatNumber;
 
-	private String state = SeatState.DISPONIBLE.getState();
-	
+	private String state;
+
 	// un asiento esta asginado a una planta unica @ManyToOne
 	@ManyToOne()
 	@JoinColumn(name = "floor_id")
 	private Floor floor;
-	
+
 	// Constructores
 	public Seat(Long id, String seatNumber, String state) {
 		this.id = id;
@@ -43,6 +44,12 @@ public class Seat {
 
 	public Seat() {
 
+	}
+
+	// Método de especificación de propiedades
+	@PrePersist
+	private void prePersistSeat() {
+		this.state = SeatState.DISPONIBLE.getState();
 	}
 
 	// getters & getters

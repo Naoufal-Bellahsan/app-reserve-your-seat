@@ -9,6 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Entidad Edificio
@@ -29,6 +32,7 @@ public class Building {
 	private String city;
 	
 	// Un edifico puede tener muchas plantas @OneToMany 
+	@JsonIgnore
 	@OneToMany(mappedBy = "building", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Floor> floors;
 	
@@ -42,7 +46,12 @@ public class Building {
 	public Building() {
 
 	}
-
+	
+	// Método de especificación de propiedades 
+	@PrePersist
+    private void prePersistBuilding(){
+		this.city = this.city.toUpperCase();
+	}
 	// Getters & Setters
 	public Long getId() {
 		return id;

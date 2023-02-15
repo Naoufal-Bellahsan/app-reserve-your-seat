@@ -9,6 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
@@ -29,10 +32,12 @@ public class Floor {
 	private String floorNumber;
 	
 	// una planta puede tener varios asientos @OneToMany
+	@JsonIgnore
 	@OneToMany(mappedBy = "floor", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Seat> seats;
 		
-	// una planta esta asignada a un edificio único @ManyToOne
+	// una planta esta asignada a un edificio único @ManyToOne	
+	@JsonIgnore
 	@ManyToOne()
 	@JoinColumn(name = "building_id")
 	private Building building;

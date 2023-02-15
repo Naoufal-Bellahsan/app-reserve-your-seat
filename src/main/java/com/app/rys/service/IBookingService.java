@@ -1,9 +1,9 @@
 package com.app.rys.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.app.rys.models.Booking;
-import com.app.rys.models.Seat;
 
 /**
  * Servicio de reservación
@@ -18,7 +18,7 @@ public interface IBookingService {
 	 * 
 	 * @return
 	 */
-	public Booking createReservation(Seat seat);
+	public Booking createReservation(String seatNumber, String adrress, String floorNumber, String city, Date reservationDate);
 	
 	/**
 	 * Método para eliminar una reserva
@@ -33,4 +33,11 @@ public interface IBookingService {
 	 * @return
 	 */
 	public List<Booking> getReservation();
+	
+	/**
+	 * Método para comprobar la disponibilidad de sillas por la fecha
+	 * 
+	 * @return
+	 */
+	public boolean checkDateAvailability(Date reservationDate, String seatNumber);
 }

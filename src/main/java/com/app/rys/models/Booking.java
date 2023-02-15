@@ -32,12 +32,13 @@ public class Booking {
 	@Pattern(message = "Booking code not valid", regexp = "^[a-z]{1}-[0-9]")
 	private String bookingCode;
 
-	@Temporal(TemporalType.TIMESTAMP) // Fecha y hora
-	private Date ReservationDate;
+	//@Temporal(TemporalType.TIMESTAMP) // Fecha y hora
+	@Temporal(TemporalType.DATE)
+	private Date reservationDate;
 
 	private String bookingState;
 
-	private String informacionDeReseva;
+	private String informacionDeReserva;
 	
 	// una reserva asignada a un único usuario @ManyToOne
 	@JsonIgnore
@@ -50,7 +51,7 @@ public class Booking {
 	public Booking(@Pattern(message = "Booking code not valid", regexp = "^[a-z]{1}-[0-9]") String bookingCode,
 			Date reservationDate, String bookingState) {
 		this.bookingCode = bookingCode;
-		this.ReservationDate = reservationDate;
+		this.reservationDate = reservationDate;
 		this.bookingState = bookingState;
 	}
 
@@ -76,11 +77,11 @@ public class Booking {
 	}
 
 	public Date getReservationDate() {
-		return ReservationDate;
+		return reservationDate;
 	}
 
 	public void setReservationDate(Date reservationDate) {
-		ReservationDate = reservationDate;
+		this.reservationDate = reservationDate;
 	}
 
 	public String getBookingState() {
@@ -91,12 +92,12 @@ public class Booking {
 		this.bookingState = bookingState;
 	}
 	
-	public String getInformacionDeReseva() {
-		return informacionDeReseva;
+	public String getInformacionDeReserva() {
+		return informacionDeReserva;
 	}
 
-	public void setInformacionDeReseva(String informacionDeReseva) {
-		this.informacionDeReseva = informacionDeReseva;
+	public void setInformacionDeReserva(String informacionDeReserva) {
+		this.informacionDeReserva = informacionDeReserva;
 	}
 
 	public User getUser() {
@@ -110,7 +111,7 @@ public class Booking {
 	// equals & hashcode
 	@Override
 	public int hashCode() {
-		return Objects.hash(ReservationDate, bookingCode, bookingState, id);
+		return Objects.hash(reservationDate, bookingCode, bookingState, id);
 	}
 
 	@Override
@@ -122,14 +123,14 @@ public class Booking {
 		if (getClass() != obj.getClass())
 			return false;
 		Booking other = (Booking) obj;
-		return Objects.equals(ReservationDate, other.ReservationDate) && Objects.equals(bookingCode, other.bookingCode)
+		return Objects.equals(reservationDate, other.reservationDate) && Objects.equals(bookingCode, other.bookingCode)
 				&& Objects.equals(bookingState, other.bookingState) && Objects.equals(id, other.id);
 	}
 
 	// toString
 	@Override
 	public String toString() {
-		return "Booking [id=" + id + ", bookingCode=" + bookingCode + ", ReservationDate=" + ReservationDate
+		return "Booking [id=" + id + ", bookingCode=" + bookingCode + ", ReservationDate=" + reservationDate
 				+ ", bookingState=" + bookingState + "]";
 	}
 
